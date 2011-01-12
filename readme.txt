@@ -1,4 +1,4 @@
-=== Twitter Friendly Links ===
+=== Goo.gl ===
 Contributors: kovshenin
 Donate link: http://kovshenin.com/
 Tags: links, twitter, short, url, socialmedia, permalinks, redirect, trim, identi.ca, microblogging, shorturl, canonical
