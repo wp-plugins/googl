@@ -3,8 +3,8 @@ Contributors: kovshenin
 Donate link: http://kovshenin.com/
 Tags: links, twitter, short, url, socialmedia, permalinks, redirect, trim, identi.ca, microblogging, shorturl, canonical, analytics
 Requires at least: 3.0
-Tested up to: 3.1
-Stable tag: 1.2
+Tested up to: 3.1.1
+Stable tag: 1.3
 
 Uses Google's URL Shortener API (Goo.gl) to create short links for your WordPress posts.
 
@@ -30,6 +30,12 @@ Feel free to ask ;)
 2. Posts List and Analytics
 
 == Change log ==
+
+= 1.3 =
+* Fixing for when WP_DEBUG is true
+* Fixing glitch on 404 pages
+* Returns goo.gl shortlink for front page too
+* Updates goo.gl shortlink on post update (for when permalink is changed)
 
 = 1.2 =
 * Minor bug fixing for failback
