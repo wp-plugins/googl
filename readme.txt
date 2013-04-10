@@ -1,18 +1,16 @@
 === Goo.gl ===
 Contributors: kovshenin
-Donate link: http://kovshenin.com/
+Donate link: http://kovshenin.com/beer/
 Tags: links, twitter, short, url, socialmedia, permalinks, redirect, trim, identi.ca, microblogging, shorturl, canonical, analytics
 Requires at least: 3.0
-Tested up to: 3.1.1
-Stable tag: 1.3
+Tested up to: 3.6
+Stable tag: 1.4.1
 
-Uses Google's URL Shortener API (Goo.gl) to create short links for your WordPress posts.
+Uses Google's URL shortener (Goo.gl) to create short links for your WordPress posts and track analytics.
 
 == Description ==
 
-Google has launched a URL Shortener API (Goo.gl) - one of the fastest and most reliable URL shortners out there. This plugin creates goo.gl short URLs for your posts, which then could be retrieved using the "Get Shortlink" button in your admin UI or the `wp_get_shortlink()` WordPress function. Goo.gl links analytics also available!
-
-Requires PHP5, WP_Http (curl, external fopen, etc) and preferably HTTPS!
+Google has launched a URL Shortener API (Goo.gl) - one of the fastest and most reliable URL shortners out there. This plugin creates goo.gl short URLs for your posts, which then could be retrieved using the "Get Shortlink" button in your admin UI or the `wp_get_shortlink()` WordPress function. Goo.gl analytics also available!
 
 == Installation ==
 
@@ -20,16 +18,20 @@ Requires PHP5, WP_Http (curl, external fopen, etc) and preferably HTTPS!
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. You're done!
 
-== Frequently Asked Questions ==
-
-Feel free to ask ;)
-
 == Screenshots ==
 
 1. Shortened URLs
 2. Posts List and Analytics
 
 == Change log ==
+
+= 1.4.1 =
+* Placeholder fix in printf
+
+= 1.4 =
+* Using wrapper functions instead of WP_Http class
+* Cleanup, coding standards, etc.
+* Testing against newer versions of WordPress
 
 = 1.3 =
 * Fixing for when WP_DEBUG is true
