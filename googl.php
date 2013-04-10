@@ -4,7 +4,7 @@ Plugin Name: Goo.gl
 Plugin URI: http://kovshenin.com/
 Description: A simple Goo.gl URL shortener for WordPress.
 Author: Konstantin Kovshenin
-Version: 1.3
+Version: 1.4
 Author URI: http://kovshenin.com/
 */
 
@@ -50,9 +50,10 @@ function googl_shortlink( $url, $post_id = false ) {
 add_filter( 'get_shortlink', 'googl_shortlink', 9, 2 );
 
 function googl_shorten( $url ) {
-	$http = new WP_Http();
-	$headers = array( 'Content-Type' => 'application/json' );
-	$result = $http->request( 'https://www.googleapis.com/urlshortener/v1/url', array( 'method' => 'POST', 'body' => '{"longUrl": "' . $url . '"}', 'headers' => $headers ) );
+	$result = wp_remote_post( 'https://www.googleapis.com/urlshortener/v1/url', array(
+		'body' => json_encode( array( 'longUrl' => esc_url_raw( $url ) ) ),
+		'headers' => array( 'Content-Type' => 'application/json' ),
+	) );
 
 	// Return the URL if the request got an error.
 	if ( is_wp_error( $result ) )
@@ -73,19 +74,18 @@ function googl_post_columns( $columns ) {
 add_filter( 'manage_edit-post_columns', 'googl_post_columns' );
 
 function googl_custom_columns( $column ) {
-	global $post;
 	if ( 'shortlink' == $column ) {
 		$shorturl = wp_get_shortlink();
 		$shorturl_caption = str_replace( 'http://', '', $shorturl );
 		$shorturl_info = str_replace( 'goo.gl/', 'goo.gl/info/', $shorturl );
-		echo "<a href='{$shorturl}'>{$shorturl_caption}</a> (<a href='{$shorturl_info}'>info</a>)";
+		printf( '<a href="%s">%s</a> (<a href="%">info</a>)', esc_url( $shorturl ), esc_html( $shorturl_caption ), esc_url( $shorturl_info ) );
 	}
 }
 add_action( 'manage_posts_custom_column', 'googl_custom_columns' );
 
 function googl_save_post( $post_ID, $post ) {
-	// Don't act on auto drafts.
-	if ( $post->post_status == 'auto-draft' )
+	// Don't act on auto drafts and revisions.
+	if ( 'auto-draft' == $post->post_status || 'revision' == $post->post_type )
 		return;
 
 	delete_post_meta( $post_ID, '_googl_shortlink' );
