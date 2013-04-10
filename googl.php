@@ -78,7 +78,7 @@ function googl_custom_columns( $column ) {
 		$shorturl = wp_get_shortlink();
 		$shorturl_caption = str_replace( 'http://', '', $shorturl );
 		$shorturl_info = str_replace( 'goo.gl/', 'goo.gl/info/', $shorturl );
-		printf( '<a href="%s">%s</a> (<a href="%">info</a>)', esc_url( $shorturl ), esc_html( $shorturl_caption ), esc_url( $shorturl_info ) );
+		printf( '<a href="%s">%s</a> (<a href="%s">info</a>)', esc_url( $shorturl ), esc_html( $shorturl_caption ), esc_url( $shorturl_info ) );
 	}
 }
 add_action( 'manage_posts_custom_column', 'googl_custom_columns' );
