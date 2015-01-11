@@ -4,7 +4,7 @@ Donate link: http://kovshenin.com/beer/
 Tags: links, twitter, short, url, socialmedia, permalinks, redirect, trim, identi.ca, microblogging, shorturl, canonical, analytics
 Requires at least: 3.0
 Tested up to: 4.1
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 
 Uses Google's URL shortener (Goo.gl) to create short links for your WordPress posts and track analytics.
 
@@ -24,6 +24,9 @@ Google has launched a URL Shortener API (Goo.gl) - one of the fastest and most r
 2. Posts List and Analytics
 
 == Change log ==
+
+= 1.4.3 =
+* Actually add the Google API key that was supposed to be added in 1.4.2.
 
 = 1.4.2 =
 * Added a Google API key which you can override with the `googl_api_key` filter.
