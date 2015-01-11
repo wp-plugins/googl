@@ -4,7 +4,7 @@ Plugin Name: Goo.gl
 Plugin URI: http://kovshenin.com/
 Description: A simple Goo.gl URL shortener for WordPress.
 Author: Konstantin Kovshenin
-Version: 1.4.1
+Version: 1.4.2
 Author URI: http://kovshenin.com/
 */
 
@@ -51,7 +51,7 @@ add_filter( 'get_shortlink', 'googl_shortlink', 9, 2 );
 
 function googl_shorten( $url ) {
 	$result = wp_remote_post( 'https://www.googleapis.com/urlshortener/v1/url', array(
-		'body' => json_encode( array( 'longUrl' => esc_url_raw( $url ) ) ),
+		'body' => json_encode( array( 'longUrl' => esc_url_raw( $url ), 'key' => apply_filters( 'googl_api_key', 'AIzaSyBEPh-As7b5US77SgxbZUfMXAwWYjfpWYg' ) ) ),
 		'headers' => array( 'Content-Type' => 'application/json' ),
 	) );
 
